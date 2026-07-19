@@ -168,7 +168,4 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Canvas 2: Hero Marquee Background (Red & White)
     createStarApp("pixi-text-canvas", "red-white");
-
-    // Canvas 3: Middle Marquee Background (Red & White)
-    createStarApp("pixi-text-canvas-2", "red-white");
 });

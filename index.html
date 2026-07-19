@@ -89,7 +89,6 @@
             white-space: nowrap;
             display: flex;
             align-items: center;
-            mix-blend-mode: screen;
             z-index: 0;
             border-top: 1px solid rgba(255,255,255,0.2);
             border-bottom: 1px solid rgba(255,255,255,0.2);
@@ -99,9 +98,8 @@
             display: flex;
             width: max-content;
             animation: marquee-rtl 25s linear infinite;
-            background: black; 
-            color: white; 
-            mix-blend-mode: multiply; 
+            background: #e60012; 
+            color: black; 
             position: relative;
             z-index: 2;
             padding: 2.5rem 0;
@@ -339,7 +337,7 @@
     <main class="relative z-10 w-full flex flex-col" style="margin-top: 100vh;">
         
         <!-- ABOUT SECTION (Slide up reveal) -->
-        <section id="about-section" class="bg-[#0c0d0e] text-white min-h-[80vh] px-6 md:px-16 py-24 md:py-32 relative shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
+        <section id="about-section" class="bg-[#0c0d0e] text-white min-h-[80vh] px-6 md:px-16 pt-24 md:pt-32 pb-0 relative shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16 lg:gap-8">
                 
                 <!-- Left: Portrait Photo with "ABOUT" Frame -->
@@ -369,7 +367,6 @@
 
         <!-- MIDDLE MARQUEE BAND (Right to Left) -->
         <div class="marquee-container-rtl">
-            <canvas id="pixi-text-canvas-2" class="absolute inset-0 w-full h-full z-[1]"></canvas>
             <div class="marquee-content-rtl">
                 <!-- Text grouping 1 -->
                 <div class="marquee-text-rtl">
@@ -878,18 +875,16 @@
     <div id="im-transition" class="fixed inset-[-50%] w-[200%] h-[200%] z-[10000] pointer-events-none flex flex-col justify-center transform -rotate-12">
         <div class="im-strip h-[25vh] w-full"></div>
         <div class="im-strip h-[25vh] w-full"></div>
-        
-        <div class="im-strip h-[25vh] w-full flex items-center px-[25vw]">
-            <span class="text-white font-bold text-6xl tracking-widest opacity-20">STAND BY</span>
-        </div>
-        <div class="im-strip h-[25vh] w-full flex items-center justify-end px-[25vw]">
-            <span class="text-white font-bold text-6xl tracking-widest opacity-20">SYSTEM ACCESS</span>
-        </div>
         <div class="im-strip h-[25vh] w-full"></div>
-        <div class="im-strip h-[25vh] w-full flex items-center px-[25vw]">
-            <span class="text-white font-bold text-6xl tracking-widest opacity-20">LOADING</span>
+        <div class="im-strip h-[25vh] w-full"></div>
+        
+        <div class="im-strip h-[25vh] w-full flex items-center justify-center px-[5vw]">
+            <span class="text-white font-bold text-3xl md:text-5xl lg:text-6xl tracking-widest opacity-20 whitespace-nowrap">
+                CALLING ALL PHANTOM THIEVES ✸ READY TO STEAL YOUR HEART ✸ DHAIFULLOH RAIHAN ZAYYAN
+            </span>
         </div>
         
+        <div class="im-strip h-[25vh] w-full"></div>
         <div class="im-strip h-[25vh] w-full"></div>
         <div class="im-strip h-[25vh] w-full"></div>
         <div class="im-strip h-[25vh] w-full"></div>
