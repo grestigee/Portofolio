@@ -107,10 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Create multiple materials with different speeds/colors
     for (let i = 0; i < materialVariantCount; i++) {
-        // We want a mix of Red/White and Black/Red stars for true Persona 5 feel
+        // Red and Black stars only
         const isRed = i % 2 === 0;
         const color1 = isRed ? hexToRgb('#e60012') : hexToRgb('#000000');
-        const color2 = isRed ? hexToRgb('#ffffff') : hexToRgb('#e60012');
+        const color2 = isRed ? hexToRgb('#7a0009') : hexToRgb('#1a1a1a'); // darker red or dark grey for the core
         const speed = i < materialVariantCount / 2 ? 0.25 : -0.25;
         const offset = Math.random() * 100;
 
