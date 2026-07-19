@@ -658,25 +658,18 @@
         window.scrollTo(0, 0);
 
         // Custom Sound Generator
+        const p5MoveSnd = new Audio('https://raw.githubusercontent.com/ant-8/persona-menu/master/src/assets/sounds/cursor_move.wav');
+        const p5SelectSnd = new Audio('https://raw.githubusercontent.com/ant-8/persona-menu/master/src/assets/sounds/cursor_select.wav');
+        
         function playTone(freq, type, duration) {
             try {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                if (!AudioContext) return;
-                const ctx = new AudioContext();
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                
-                osc.type = type || 'sine';
-                osc.frequency.setValueAtTime(freq, ctx.currentTime);
-                
-                gain.gain.setValueAtTime(0.05, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
-                
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                
-                osc.start();
-                osc.stop(ctx.currentTime + duration);
+                if (duration > 0.15) {
+                    p5SelectSnd.currentTime = 0;
+                    p5SelectSnd.play().catch(e => console.log(e));
+                } else {
+                    p5MoveSnd.currentTime = 0;
+                    p5MoveSnd.play().catch(e => console.log(e));
+                }
             } catch(e) {}
         }
 
@@ -873,29 +866,33 @@
     </script>
     <!-- P5 IM TRANSITION OVERLAY -->
     <div id="im-transition" class="fixed inset-[-50%] w-[200%] h-[200%] z-[10000] pointer-events-none flex flex-col justify-center transform -rotate-12">
-        <div class="im-strip h-[25vh] w-full"></div>
-        <div class="im-strip h-[25vh] w-full"></div>
-        
-        <div class="im-strip h-[25vh] w-full flex items-center px-[20vw]">
-            <span class="text-white font-bold text-4xl md:text-5xl lg:text-7xl tracking-widest opacity-20">
-                CALLING ALL PHANTOM THIEVES
-            </span>
+        <div class="im-strip h-[25vh] w-full flex items-center px-[10vw]">
+            <span class="text-white font-bold text-3xl md:text-5xl lg:text-7xl tracking-widest opacity-20">CALLING</span>
         </div>
-        <div class="im-strip h-[25vh] w-full"></div>
-        <div class="im-strip h-[25vh] w-full flex items-center justify-center px-[5vw]">
-            <span class="text-white font-bold text-4xl md:text-5xl lg:text-7xl tracking-widest opacity-20">
-                READY TO STEAL YOUR HEART
-            </span>
-        </div>
-        <div class="im-strip h-[25vh] w-full"></div>
         <div class="im-strip h-[25vh] w-full flex items-center justify-end px-[20vw]">
-            <span class="text-white font-bold text-4xl md:text-5xl lg:text-7xl tracking-widest opacity-20">
-                DHAIFULLOH RAIHAN ZAYYAN
-            </span>
+            <span class="text-white font-bold text-3xl md:text-5xl lg:text-7xl tracking-widest opacity-20">ALL</span>
         </div>
-        
-        <div class="im-strip h-[25vh] w-full"></div>
-        <div class="im-strip h-[25vh] w-full"></div>
+        <div class="im-strip h-[25vh] w-full flex items-center px-[15vw]">
+            <span class="text-white font-bold text-3xl md:text-5xl lg:text-7xl tracking-widest opacity-20">PHANTOM</span>
+        </div>
+        <div class="im-strip h-[25vh] w-full flex items-center justify-center px-[5vw]">
+            <span class="text-white font-bold text-3xl md:text-5xl lg:text-7xl tracking-widest opacity-20">THIEVES</span>
+        </div>
+        <div class="im-strip h-[25vh] w-full flex items-center px-[25vw]">
+            <span class="text-white font-bold text-3xl md:text-5xl lg:text-7xl tracking-widest opacity-20">READY</span>
+        </div>
+        <div class="im-strip h-[25vh] w-full flex items-center justify-end px-[15vw]">
+            <span class="text-white font-bold text-3xl md:text-5xl lg:text-7xl tracking-widest opacity-20">TO STEAL</span>
+        </div>
+        <div class="im-strip h-[25vh] w-full flex items-center px-[10vw]">
+            <span class="text-white font-bold text-3xl md:text-5xl lg:text-7xl tracking-widest opacity-20">YOUR HEART</span>
+        </div>
+        <div class="im-strip h-[25vh] w-full flex items-center justify-center px-[20vw]">
+            <span class="text-white font-bold text-3xl md:text-5xl lg:text-7xl tracking-widest opacity-20">DHAIFULLOH</span>
+        </div>
+        <div class="im-strip h-[25vh] w-full flex items-center justify-end px-[5vw]">
+            <span class="text-white font-bold text-3xl md:text-5xl lg:text-7xl tracking-widest opacity-20">RAIHAN ZAYYAN</span>
+        </div>
     </div>
 </body>
 </html>
