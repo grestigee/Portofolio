@@ -163,10 +163,14 @@
     <!-- PRELOADER OVERLAY WITH "DRZ" -->
     <div id="preloader" class="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden pointer-events-none">
         
-        <!-- Persona 5 Starburst Transition -->
-        <div id="star-layer-1" class="absolute w-[300vw] h-[300vw] bg-white transition-transform duration-[1000ms] ease-in-out pointer-events-auto" style="clip-path: polygon(50% 0%, 65% 30%, 100% 20%, 75% 50%, 95% 85%, 60% 75%, 45% 100%, 35% 70%, 0% 80%, 25% 45%, 5% 15%, 40% 30%);"></div>
-        <div id="star-layer-2" class="absolute w-[300vw] h-[300vw] bg-[#e60012] transition-transform duration-[800ms] ease-in-out pointer-events-auto" style="clip-path: polygon(50% 5%, 70% 25%, 95% 10%, 80% 45%, 100% 70%, 65% 65%, 55% 95%, 40% 70%, 5% 90%, 20% 50%, 0% 25%, 35% 35%);"></div>
-        <div id="star-layer-3" class="absolute w-[300vw] h-[300vw] bg-black transition-transform duration-[600ms] ease-in-out pointer-events-auto" style="clip-path: polygon(45% 0%, 60% 35%, 90% 15%, 75% 55%, 100% 90%, 55% 75%, 40% 100%, 30% 65%, 0% 85%, 25% 40%, 10% 5%, 40% 25%);"></div>
+        <!-- GitHub Template Style: Tearing Stripes Transition -->
+        <div id="stripe-layer" class="absolute inset-0 flex flex-col w-[120vw] h-[120vh] -left-[10vw] -top-[10vh] transform -rotate-[15deg] pointer-events-auto">
+            <div id="stripe-1" class="w-full flex-1 bg-[#e60012] transition-transform duration-[600ms] ease-[cubic-bezier(0.85,0,0.15,1)] delay-[0ms]"></div>
+            <div id="stripe-2" class="w-full flex-1 bg-black transition-transform duration-[600ms] ease-[cubic-bezier(0.85,0,0.15,1)] delay-[100ms]"></div>
+            <div id="stripe-3" class="w-full flex-1 bg-white transition-transform duration-[600ms] ease-[cubic-bezier(0.85,0,0.15,1)] delay-[200ms]"></div>
+            <div id="stripe-4" class="w-full flex-1 bg-black transition-transform duration-[600ms] ease-[cubic-bezier(0.85,0,0.15,1)] delay-[300ms]"></div>
+            <div id="stripe-5" class="w-full flex-1 bg-[#e60012] transition-transform duration-[600ms] ease-[cubic-bezier(0.85,0,0.15,1)] delay-[400ms]"></div>
+        </div>
         
         <div id="loader-text-wrapper" class="absolute z-[10000] text-center transition-all duration-700 ease-out flex flex-col items-center">
             <span id="loader-subtitle" class="text-lg md:text-xl uppercase tracking-[0.6em] text-white mb-4 opacity-0 translate-y-6 transition-all duration-1000 ease-out drop-shadow-[2px_2px_0_rgba(230,0,18,1)]">
@@ -633,13 +637,11 @@
                 textWrapper.style.opacity = "0";
                 textWrapper.style.transform = "scale(1.05)";
                 
-                document.getElementById("star-layer-3").style.transform = "scale(0) rotate(90deg)";
-                setTimeout(() => {
-                    document.getElementById("star-layer-2").style.transform = "scale(0) rotate(-90deg)";
-                }, 150);
-                setTimeout(() => {
-                    document.getElementById("star-layer-1").style.transform = "scale(0) rotate(45deg)";
-                }, 300);
+                document.getElementById("stripe-1").style.transform = "translateX(100%)";
+                document.getElementById("stripe-2").style.transform = "translateX(-100%)";
+                document.getElementById("stripe-3").style.transform = "translateX(100%)";
+                document.getElementById("stripe-4").style.transform = "translateX(-100%)";
+                document.getElementById("stripe-5").style.transform = "translateX(100%)";
 
                 playTone(330, 'triangle', 0.8);
                 
