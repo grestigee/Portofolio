@@ -12,19 +12,6 @@
     
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap');
-        
-        .p5-star-bg {
-            background-color: #e60012;
-            background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 15 L32 28 L45 30 L32 32 L30 45 L28 32 L15 30 L28 28 Z' fill='rgba(255,255,255,0.4)'/%3E%3Cpath d='M90 75 L93 83 L101 85 L93 87 L90 95 L87 87 L79 85 L87 83 Z' fill='rgba(0,0,0,0.3)'/%3E%3Cpath d='M10 80 L12 85 L17 87 L12 89 L10 94 L8 89 L3 87 L8 85 Z' fill='rgba(0,0,0,0.1)'/%3E%3Ccircle cx='60' cy='100' r='3' fill='rgba(255,255,255,0.2)'/%3E%3Ccircle cx='100' cy='30' r='2' fill='rgba(0,0,0,0.2)'/%3E%3Ccircle cx='40' cy='40' r='4' fill='rgba(255,255,255,0.1)'/%3E%3C/svg%3E");
-            background-size: 150px 150px;
-            animation: p5-bg-scroll 8s linear infinite;
-        }
-
-        @keyframes p5-bg-scroll {
-            from { background-position: 0 0; }
-            to { background-position: -150px 150px; }
-        }
-
         body {
             font-family: 'Bebas Neue', 'Inter', sans-serif;
             background-color: #e5e7eb;
@@ -169,8 +156,15 @@
             border-bottom-width: 1px;
         }
     </style>
+    
+    <!-- Pixi.js WebGL Engine for Persona 5 Star Shader -->
+    <script src="https://pixijs.download/v7.3.2/pixi.min.js"></script>
+    <script src="./p5-stars.js"></script>
 </head>
-<body class="antialiased relative overflow-y-hidden">
+<body class="antialiased relative overflow-y-hidden bg-[#e60012]">
+    
+    <!-- WebGL Background Canvas -->
+    <canvas id="pixi-canvas" class="fixed inset-0 w-full h-screen z-0 pointer-events-none"></canvas>
 
     <!-- PRELOADER OVERLAY WITH "DRZ" -->
     <div id="preloader" class="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden pointer-events-none">
@@ -233,7 +227,7 @@
       FIXED HERO BACKGROUND
       This stays perfectly still while the sections below it slide up to cover it.
     -->
-    <div class="fixed inset-0 w-full h-screen z-0 p5-star-bg flex flex-col justify-between overflow-hidden">
+    <div class="fixed inset-0 w-full h-screen z-[1] flex flex-col justify-between overflow-hidden pointer-events-none">
         <div class="circle-line circle-left border-black/10"></div>
         <div class="circle-line circle-right border-black/10"></div>
         <div class="absolute left-[33%] top-0 w-[1px] h-full bg-black/10 z-0"></div>
@@ -395,7 +389,7 @@
         </section>
 
         <!-- RESUME SECTION -->
-        <section id="resume-section" class="p5-star-bg text-white py-20 md:py-32 px-6 md:px-16 border-t border-black">
+        <section id="resume-section" class="bg-transparent text-white py-20 md:py-32 px-6 md:px-16 border-t border-black relative z-10">
             <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
                 
                 <!-- Left: Huge Typography -->
