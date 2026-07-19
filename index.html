@@ -45,18 +45,19 @@
             overflow: hidden;
             z-index: 0; 
             white-space: nowrap;
-            mix-blend-mode: screen; /* Allows canvas to show over background */
+            mix-blend-mode: screen; 
             display: flex;
             align-items: center;
         }
 
         .marquee-content-ltr {
-            display: inline-flex;
+            display: flex;
+            width: max-content;
             align-items: center;
             animation: marquee-ltr 22s linear infinite;
-            background: black; /* Mask background */
-            color: white; /* Mask text */
-            mix-blend-mode: multiply; /* Cuts out text to show canvas below */
+            background: black; 
+            color: white; 
+            mix-blend-mode: multiply; 
             position: relative;
             z-index: 2;
             height: 100%;
@@ -69,8 +70,8 @@
             letter-spacing: -0.04em;
             text-transform: uppercase;
             padding-right: 10vw;
-            display: inline-block;
-            transform: translateY(1vw); /* Optical adjustment to center perfectly */
+            display: block; /* Flex child */
+            transform: translateY(1vw); 
         }
 
         @keyframes marquee-ltr {
@@ -95,17 +96,18 @@
         }
 
         .marquee-content-rtl {
-            display: inline-block;
+            display: flex;
+            width: max-content;
             animation: marquee-rtl 25s linear infinite;
         }
 
         .marquee-text-rtl {
             font-family: 'Syne', sans-serif;
-            font-size: 3rem; /* Adjust based on preference */
+            font-size: 3rem; 
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 0.02em;
-            display: inline-flex;
+            display: flex;
             align-items: center;
             gap: 2rem;
             padding-right: 2rem;
