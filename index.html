@@ -102,12 +102,12 @@
             color: black; 
             position: relative;
             z-index: 2;
-            padding: 2.5rem 0;
+            padding: 1rem 0;
         }
 
         .marquee-text-rtl {
             font-family: 'Syne', sans-serif;
-            font-size: 3rem; 
+            font-size: 2rem; 
             font-weight: 800;
             line-height: 1.2;
             text-transform: uppercase;
@@ -337,7 +337,7 @@
     <main class="relative z-10 w-full flex flex-col" style="margin-top: 100vh;">
         
         <!-- ABOUT SECTION (Slide up reveal) -->
-        <section id="about-section" class="bg-[#0c0d0e] text-white min-h-[80vh] px-6 md:px-16 pt-24 md:pt-32 pb-0 relative shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
+        <section id="about-section" class="bg-[#0c0d0e] text-white min-h-[80vh] px-6 md:px-16 pt-24 md:pt-32 pb-16 relative shadow-[0_-20px_50px_rgba(0,0,0,0.5)]">
             <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16 lg:gap-8">
                 
                 <!-- Left: Portrait Photo with "ABOUT" Frame -->
@@ -875,17 +875,25 @@
     <div id="im-transition" class="fixed inset-[-50%] w-[200%] h-[200%] z-[10000] pointer-events-none flex flex-col justify-center transform -rotate-12">
         <div class="im-strip h-[25vh] w-full"></div>
         <div class="im-strip h-[25vh] w-full"></div>
-        <div class="im-strip h-[25vh] w-full"></div>
-        <div class="im-strip h-[25vh] w-full"></div>
         
+        <div class="im-strip h-[25vh] w-full flex items-center px-[20vw]">
+            <span class="text-white font-bold text-4xl md:text-5xl lg:text-7xl tracking-widest opacity-20">
+                CALLING ALL PHANTOM THIEVES
+            </span>
+        </div>
+        <div class="im-strip h-[25vh] w-full"></div>
         <div class="im-strip h-[25vh] w-full flex items-center justify-center px-[5vw]">
-            <span class="text-white font-bold text-3xl md:text-5xl lg:text-6xl tracking-widest opacity-20 whitespace-nowrap">
-                CALLING ALL PHANTOM THIEVES ✸ READY TO STEAL YOUR HEART ✸ DHAIFULLOH RAIHAN ZAYYAN
+            <span class="text-white font-bold text-4xl md:text-5xl lg:text-7xl tracking-widest opacity-20">
+                READY TO STEAL YOUR HEART
+            </span>
+        </div>
+        <div class="im-strip h-[25vh] w-full"></div>
+        <div class="im-strip h-[25vh] w-full flex items-center justify-end px-[20vw]">
+            <span class="text-white font-bold text-4xl md:text-5xl lg:text-7xl tracking-widest opacity-20">
+                DHAIFULLOH RAIHAN ZAYYAN
             </span>
         </div>
         
-        <div class="im-strip h-[25vh] w-full"></div>
-        <div class="im-strip h-[25vh] w-full"></div>
         <div class="im-strip h-[25vh] w-full"></div>
         <div class="im-strip h-[25vh] w-full"></div>
     </div>
