@@ -37,19 +37,22 @@
          */
         .marquee-container-ltr {
             position: absolute;
-            top: 52%;
-            left: -10vw;
-            width: 120vw;
-            height: 35vh; 
-            transform: translateY(-50%) rotate(-10deg);
+            top: 50%;
+            left: 0;
+            width: 100vw;
+            height: 28vw; 
+            transform: translateY(-50%);
             overflow: hidden;
             z-index: 0; 
             white-space: nowrap;
             mix-blend-mode: screen; /* Allows canvas to show over background */
+            display: flex;
+            align-items: center;
         }
 
         .marquee-content-ltr {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             animation: marquee-ltr 22s linear infinite;
             background: black; /* Mask background */
             color: white; /* Mask text */
@@ -62,11 +65,12 @@
         .marquee-text-ltr {
             font-size: 24vw; 
             font-weight: 900;
-            line-height: 35vh; /* Match container height */
+            line-height: 1.1; 
             letter-spacing: -0.04em;
             text-transform: uppercase;
             padding-right: 10vw;
-            vertical-align: middle;
+            display: inline-block;
+            transform: translateY(1vw); /* Optical adjustment to center perfectly */
         }
 
         @keyframes marquee-ltr {
@@ -170,6 +174,41 @@
             border-bottom-color: #d4d4d4;
             border-bottom-width: 1px;
         }
+        .contact-input:focus {
+            outline: none;
+            border-bottom-width: 3px;
+        }
+
+        /* P5 IM TRANSITION */
+        #im-transition {
+            transition: visibility 0s 1s;
+            visibility: hidden;
+        }
+        #im-transition.active {
+            visibility: visible;
+            transition: visibility 0s 0s;
+        }
+        .im-strip {
+            transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+            will-change: transform;
+        }
+        #im-transition.active .im-strip {
+            transform: translateX(0) !important;
+        }
+        .im-strip:nth-child(odd) { transform: translateX(100%); background-color: #e60012; }
+        .im-strip:nth-child(even) { transform: translateX(-100%); background-color: #111; }
+        
+        #im-transition.active .im-strip:nth-child(1) { transition-delay: 0.0s; }
+        #im-transition.active .im-strip:nth-child(2) { transition-delay: 0.05s; }
+        #im-transition.active .im-strip:nth-child(3) { transition-delay: 0.1s; }
+        #im-transition.active .im-strip:nth-child(4) { transition-delay: 0.15s; }
+        #im-transition.active .im-strip:nth-child(5) { transition-delay: 0.2s; }
+        
+        #im-transition:not(.active) .im-strip:nth-child(1) { transition-delay: 0.2s; }
+        #im-transition:not(.active) .im-strip:nth-child(2) { transition-delay: 0.15s; }
+        #im-transition:not(.active) .im-strip:nth-child(3) { transition-delay: 0.1s; }
+        #im-transition:not(.active) .im-strip:nth-child(4) { transition-delay: 0.05s; }
+        #im-transition:not(.active) .im-strip:nth-child(5) { transition-delay: 0.0s; }
     </style>
     
     <!-- Pixi.js WebGL Engine for Persona 5 Star Shader -->
@@ -262,14 +301,7 @@
             </div>
         </div>
 
-        <!-- Portrait -->
-        <div class="relative w-full h-full flex items-end justify-center z-10 select-none pb-0 pt-24">
-            <div class="relative h-[60vh] max-w-md lg:max-w-xl transform scale-95 opacity-0 translate-y-16 transition-all duration-[1500ms] delay-300 hero-portrait">
-                <img src="./Profil_Photo.jpg" 
-                     alt="Dhaifulloh Raihan Zayyan Portrait" 
-                     class="h-full w-full object-cover object-top portrait-mask drop-shadow-[0_25px_50px_rgba(0,0,0,0.25)]">
-            </div>
-        </div>
+
 
         <!-- Scroll Indicator -->
         <div class="absolute right-6 lg:right-12 bottom-[15%] z-20 flex flex-col items-center gap-4 opacity-0 translate-y-10 transition-all duration-1000 delay-1000 hero-scroll">
@@ -771,12 +803,32 @@
             });
         }
 
+        function playImTransition(scrollCallback) {
+            const transition = document.getElementById('im-transition');
+            if(!transition) {
+                scrollCallback();
+                return;
+            }
+            playTone(600, 'square', 0.05); // UI Sound
+            transition.classList.add('active');
+            
+            // Wait for strips to cover screen (stagger up to 0.2s + duration 0.4s = 0.6s)
+            setTimeout(() => {
+                scrollCallback(); // Do the instant scroll while hidden
+                
+                // Small delay then slide away
+                setTimeout(() => {
+                    transition.classList.remove('active');
+                }, 100);
+            }, 600);
+        }
+
         function scrollToAbout() {
-            playTone(400, 'sine', 0.1);
-            // Scroll to exactly window height, which reveals the about section
-            window.scrollTo({
-                top: window.innerHeight,
-                behavior: 'smooth'
+            playImTransition(() => {
+                window.scrollTo({
+                    top: window.innerHeight,
+                    behavior: 'instant'
+                });
             });
         }
 
@@ -794,13 +846,29 @@
                 if (targetId && targetId.startsWith('#')) {
                     const targetElement = document.querySelector(targetId);
                     if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                        // Update URL without causing jump
-                        history.pushState(null, null, targetId);
+                        playImTransition(() => {
+                            targetElement.scrollIntoView({ behavior: 'instant' });
+                            // Update URL without causing jump
+                            history.pushState(null, null, targetId);
+                        });
                     }
                 }
             });
         });
     </script>
+    <!-- P5 IM TRANSITION OVERLAY -->
+    <div id="im-transition" class="fixed inset-[-50%] w-[200%] h-[200%] z-[10000] pointer-events-none flex flex-col justify-center transform -rotate-12">
+        <div class="im-strip h-[25vh] w-full flex items-center px-[25vw]">
+            <span class="text-white font-bold text-6xl tracking-widest opacity-20">STAND BY</span>
+        </div>
+        <div class="im-strip h-[25vh] w-full flex items-center justify-end px-[25vw]">
+            <span class="text-white font-bold text-6xl tracking-widest opacity-20">SYSTEM ACCESS</span>
+        </div>
+        <div class="im-strip h-[25vh] w-full"></div>
+        <div class="im-strip h-[25vh] w-full flex items-center px-[25vw]">
+            <span class="text-white font-bold text-6xl tracking-widest opacity-20">LOADING</span>
+        </div>
+        <div class="im-strip h-[25vh] w-full"></div>
+    </div>
 </body>
 </html>
