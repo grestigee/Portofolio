@@ -161,20 +161,23 @@
 <body class="antialiased relative overflow-y-hidden">
 
     <!-- PRELOADER OVERLAY WITH "DRZ" -->
-    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden">
-        <div id="shutter-top" class="absolute top-0 left-0 w-full h-1/2 bg-[#0c0d0e] transition-transform duration-[1200ms] ease-[cubic-bezier(0.85,0,0.15,1)] flex items-end justify-center"></div>
+    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden pointer-events-none">
+        
+        <!-- Persona 5 Style Diagonal Shutters -->
+        <div class="absolute w-[200vw] h-[200vh] transform -rotate-[15deg] flex flex-col items-center justify-center pointer-events-auto">
+            <div id="shutter-top" class="w-full h-1/2 bg-black border-b-[20px] border-[#e60012] transition-transform duration-[1200ms] ease-[cubic-bezier(0.85,0,0.15,1)]"></div>
+            <div id="shutter-bottom" class="w-full h-1/2 bg-black border-t-[20px] border-[#e60012] transition-transform duration-[1200ms] ease-[cubic-bezier(0.85,0,0.15,1)]"></div>
+        </div>
         
         <div id="loader-text-wrapper" class="absolute z-[10000] text-center transition-all duration-700 ease-out flex flex-col items-center">
-            <span id="loader-subtitle" class="text-lg md:text-xl uppercase tracking-[0.6em] text-neutral-500 mb-4 opacity-0 translate-y-6 transition-all duration-1000 ease-out">
+            <span id="loader-subtitle" class="text-lg md:text-xl uppercase tracking-[0.6em] text-white mb-4 opacity-0 translate-y-6 transition-all duration-1000 ease-out drop-shadow-[2px_2px_0_rgba(230,0,18,1)]">
                 Design by Dhaifulloh Raihan Zayyan
             </span>
-            <h1 id="loader-title" class="text-6xl md:text-8xl font-black text-white tracking-widest opacity-0 scale-90 transition-all duration-1000 ease-out">
+            <h1 id="loader-title" class="text-6xl md:text-8xl font-black text-white tracking-widest opacity-0 scale-90 transition-all duration-1000 ease-out drop-shadow-[4px_4px_0_rgba(230,0,18,1)]">
                 DRZ
             </h1>
-            <div id="loader-bar" class="w-24 h-[1px] bg-neutral-700 mt-6 scale-x-0 transition-transform duration-1000"></div>
+            <div id="loader-bar" class="w-24 h-[4px] bg-[#e60012] mt-6 scale-x-0 transition-transform duration-1000"></div>
         </div>
-
-        <div id="shutter-bottom" class="absolute bottom-0 left-0 w-full h-1/2 bg-[#0c0d0e] transition-transform duration-[1200ms] ease-[cubic-bezier(0.85,0,0.15,1)] flex items-start justify-center"></div>
     </div>
 
     <!-- FIXED NAVIGATION BAR -->
@@ -383,7 +386,7 @@
                 <!-- Left: Huge Typography -->
                 <div class="w-full lg:w-4/12 flex flex-col">
                     <h2 class="text-6xl lg:text-8xl font-black tracking-tighter uppercase text-black drop-shadow-[2px_2px_0_rgba(255,255,255,1)] mb-6">
-                        RESU<br>ME
+                        RESUME
                     </h2>
                     <p class="text-white text-sm leading-relaxed font-bold">
                         Pengalaman, Pendidikan, dan Keahlian Teknis yang saya miliki dalam bidang Web dan Game Development.
