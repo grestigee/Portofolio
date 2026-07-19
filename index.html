@@ -184,23 +184,23 @@
         </div>
         
         <div class="hidden md:flex gap-6 lg:gap-8 text-[11px] lg:text-xs font-bold tracking-widest text-neutral-800 uppercase">
-            <a href="#selected-works" class="hover:text-neutral-500 transition-colors nav-link">Works</a>
+            <a href="#selected-works" class="hover:text-[#e60012] transition-colors nav-link">Works</a>
             <span class="text-neutral-300">/</span>
-            <a href="#skills-section" class="hover:text-neutral-500 transition-colors nav-link">Skills</a>
+            <a href="#skills-section" class="hover:text-[#e60012] transition-colors nav-link">Skills</a>
             <span class="text-neutral-300">/</span>
-            <a href="#resume-section" class="hover:text-neutral-500 transition-colors nav-link">Resume</a>
+            <a href="#resume-section" class="hover:text-[#e60012] transition-colors nav-link">Resume</a>
             <span class="text-neutral-300">/</span>
-            <a href="#about-section" class="hover:text-neutral-500 transition-colors nav-link">About</a>
+            <a href="#about-section" class="hover:text-[#e60012] transition-colors nav-link">About</a>
         </div>
 
         <div class="flex items-center gap-4 text-xl">
-            <a href="https://www.instagram.com/dhaiiizzzz/" target="_blank" rel="noopener noreferrer" class="text-black hover:text-neutral-600 transition-all duration-300 transform hover:scale-110 active:scale-95">
+            <a href="https://www.instagram.com/dhaiiizzzz/" target="_blank" rel="noopener noreferrer" class="text-black hover:text-[#e60012] transition-all duration-300 transform hover:scale-110 active:scale-95">
                 <i class="fa-brands fa-instagram"></i>
             </a>
-            <a href="https://github.com/grestigee" target="_blank" rel="noopener noreferrer" class="text-black hover:text-neutral-600 transition-all duration-300 transform hover:scale-110 active:scale-95">
+            <a href="https://github.com/grestigee" target="_blank" rel="noopener noreferrer" class="text-black hover:text-[#e60012] transition-all duration-300 transform hover:scale-110 active:scale-95">
                 <i class="fa-brands fa-github"></i>
             </a>
-            <a href="https://www.linkedin.com/in/dhaifulloh-raihan-zayyan-855a97320/" target="_blank" rel="noopener noreferrer" class="text-black hover:text-neutral-600 transition-all duration-300 transform hover:scale-110 active:scale-95">
+            <a href="https://www.linkedin.com/in/dhaifulloh-raihan-zayyan-855a97320/" target="_blank" rel="noopener noreferrer" class="text-black hover:text-[#e60012] transition-all duration-300 transform hover:scale-110 active:scale-95">
                 <i class="fa-brands fa-linkedin-in"></i>
             </a>
         </div>
@@ -212,10 +212,10 @@
       FIXED HERO BACKGROUND
       This stays perfectly still while the sections below it slide up to cover it.
     -->
-    <div class="fixed inset-0 w-full h-screen z-0 bg-[#e5e7eb] flex flex-col justify-between overflow-hidden">
-        <div class="circle-line circle-left"></div>
-        <div class="circle-line circle-right"></div>
-        <div class="absolute left-[33%] top-0 w-[1px] h-full bg-neutral-900/10 z-0"></div>
+    <div class="fixed inset-0 w-full h-screen z-0 bg-[#e60012] bg-cover bg-center bg-no-repeat flex flex-col justify-between overflow-hidden" style="background-image: url('./persona-5-backgroud-star.gif');">
+        <div class="circle-line circle-left border-black/10"></div>
+        <div class="circle-line circle-right border-black/10"></div>
+        <div class="absolute left-[33%] top-0 w-[1px] h-full bg-black/10 z-0"></div>
 
         <div class="absolute left-6 lg:left-12 top-[30%] z-20 max-w-[200px] md:max-w-xs opacity-0 -translate-x-10 transition-all duration-1000 delay-700 hero-text mix-blend-difference">
             <p class="text-lg lg:text-2xl font-semibold text-white leading-tight">Full Stack</p>
@@ -243,7 +243,7 @@
         <!-- Scroll Indicator -->
         <div class="absolute right-6 lg:right-12 bottom-[15%] z-20 flex flex-col items-center gap-4 opacity-0 translate-y-10 transition-all duration-1000 delay-1000 hero-scroll">
             <span class="text-xs tracking-widest font-bold uppercase text-neutral-800 vertical-text [writing-mode:vertical-lr]">Scroll down</span>
-            <div class="flex flex-col items-center justify-center w-10 h-10 border border-black/30 rounded-full bg-white/40 backdrop-blur-sm shadow-sm cursor-pointer hover:bg-black hover:text-white hover:border-black transition-all group" onclick="scrollToAbout()">
+            <div class="flex flex-col items-center justify-center w-10 h-10 border border-black/30 rounded-full bg-white/40 backdrop-blur-sm shadow-sm cursor-pointer hover:bg-[#e60012] hover:text-white hover:border-[#e60012] transition-all group" onclick="scrollToAbout()">
                 <i class="fa-solid fa-arrow-down animate-bounce text-sm"></i>
             </div>
         </div>
@@ -328,17 +328,17 @@
                     <div id="skills-section" class="max-w-2xl scroll-mt-24">
                         <p class="text-neutral-500 font-bold tracking-widest text-xs uppercase mb-6">Core Competencies</p>
                         <div class="flex flex-wrap gap-3 md:gap-4">
-                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-black hover:text-white hover:border-black transition-all cursor-default shadow-sm"><i class="fa-brands fa-react"></i> React.js</span>
-                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-black hover:text-white hover:border-black transition-all cursor-default shadow-sm"><i class="fa-brands fa-node-js"></i> Node.js</span>
-                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-black hover:text-white hover:border-black transition-all cursor-default shadow-sm"><i class="fa-brands fa-unity"></i> Unity 3D</span>
-                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-black hover:text-white hover:border-black transition-all cursor-default shadow-sm"><i class="fa-solid fa-terminal"></i> C# / C++</span>
-                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-black hover:text-white hover:border-black transition-all cursor-default shadow-sm"><i class="fa-solid fa-pen-nib"></i> UI/UX Design</span>
-                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-black hover:text-white hover:border-black transition-all cursor-default shadow-sm"><i class="fa-brands fa-css3-alt"></i> Tailwind CSS</span>
-                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-black hover:text-white hover:border-black transition-all cursor-default shadow-sm"><i class="fa-solid fa-code"></i> TypeScript</span>
+                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-[#e60012] hover:text-white hover:border-[#e60012] transition-all cursor-default shadow-sm"><i class="fa-brands fa-react"></i> React.js</span>
+                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-[#e60012] hover:text-white hover:border-[#e60012] transition-all cursor-default shadow-sm"><i class="fa-brands fa-node-js"></i> Node.js</span>
+                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-[#e60012] hover:text-white hover:border-[#e60012] transition-all cursor-default shadow-sm"><i class="fa-brands fa-unity"></i> Unity 3D</span>
+                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-[#e60012] hover:text-white hover:border-[#e60012] transition-all cursor-default shadow-sm"><i class="fa-solid fa-terminal"></i> C# / C++</span>
+                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-[#e60012] hover:text-white hover:border-[#e60012] transition-all cursor-default shadow-sm"><i class="fa-solid fa-pen-nib"></i> UI/UX Design</span>
+                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-[#e60012] hover:text-white hover:border-[#e60012] transition-all cursor-default shadow-sm"><i class="fa-brands fa-css3-alt"></i> Tailwind CSS</span>
+                            <span class="flex items-center gap-2 px-5 py-2.5 rounded-full border border-neutral-300 text-sm md:text-base font-semibold text-neutral-800 hover:bg-[#e60012] hover:text-white hover:border-[#e60012] transition-all cursor-default shadow-sm"><i class="fa-solid fa-code"></i> TypeScript</span>
                         </div>
                     </div>
                     
-                    <button onclick="toggleModal()" class="shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-full border border-neutral-300 flex items-center justify-center text-center font-bold text-sm md:text-base tracking-wider hover:bg-black hover:text-white transition-all duration-500 hover:scale-105 active:scale-95 group">
+                    <button onclick="toggleModal()" class="shrink-0 w-32 h-32 md:w-40 md:h-40 rounded-full border border-[#e60012] flex items-center justify-center text-center font-bold text-sm md:text-base tracking-wider hover:bg-[#e60012] hover:text-white text-[#e60012] transition-all duration-500 hover:scale-105 active:scale-95 group">
                         <span class="group-hover:-translate-y-1 transition-transform block">GET IN<br>TOUCH</span>
                     </button>
                 </div>
@@ -374,15 +374,15 @@
         </section>
 
         <!-- RESUME SECTION -->
-        <section id="resume-section" class="bg-[#0c0d0e] text-white py-20 md:py-32 px-6 md:px-16 border-t border-neutral-800">
+        <section id="resume-section" class="bg-[#e60012] text-white py-20 md:py-32 px-6 md:px-16 border-t border-black">
             <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-24">
                 
                 <!-- Left: Huge Typography -->
                 <div class="w-full lg:w-4/12 flex flex-col">
-                    <h2 class="text-6xl lg:text-8xl font-black tracking-tighter uppercase text-white mb-6">
+                    <h2 class="text-6xl lg:text-8xl font-black tracking-tighter uppercase text-black drop-shadow-[2px_2px_0_rgba(255,255,255,1)] mb-6">
                         RESU<br>ME
                     </h2>
-                    <p class="text-neutral-400 text-sm leading-relaxed font-light">
+                    <p class="text-white text-sm leading-relaxed font-bold">
                         Pengalaman, Pendidikan, dan Keahlian Teknis yang saya miliki dalam bidang Web dan Game Development.
                     </p>
                 </div>
