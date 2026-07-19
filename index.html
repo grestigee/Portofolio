@@ -161,13 +161,12 @@
 <body class="antialiased relative overflow-y-hidden">
 
     <!-- PRELOADER OVERLAY WITH "DRZ" -->
-    <div id="preloader" class="fixed inset-0 z-[9999] flex flex-col items-center justify-center overflow-hidden pointer-events-none">
+    <div id="preloader" class="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden pointer-events-none">
         
-        <!-- Persona 5 Style Diagonal Shutters -->
-        <div class="absolute w-[200vw] h-[200vh] transform -rotate-[15deg] flex flex-col items-center justify-center pointer-events-auto">
-            <div id="shutter-top" class="w-full h-1/2 bg-black border-b-[20px] border-[#e60012] transition-transform duration-[1200ms] ease-[cubic-bezier(0.85,0,0.15,1)]"></div>
-            <div id="shutter-bottom" class="w-full h-1/2 bg-black border-t-[20px] border-[#e60012] transition-transform duration-[1200ms] ease-[cubic-bezier(0.85,0,0.15,1)]"></div>
-        </div>
+        <!-- Persona 5 Starburst Transition -->
+        <div id="star-layer-1" class="absolute w-[300vw] h-[300vw] bg-white transition-transform duration-[1000ms] ease-in-out pointer-events-auto" style="clip-path: polygon(50% 0%, 65% 30%, 100% 20%, 75% 50%, 95% 85%, 60% 75%, 45% 100%, 35% 70%, 0% 80%, 25% 45%, 5% 15%, 40% 30%);"></div>
+        <div id="star-layer-2" class="absolute w-[300vw] h-[300vw] bg-[#e60012] transition-transform duration-[800ms] ease-in-out pointer-events-auto" style="clip-path: polygon(50% 5%, 70% 25%, 95% 10%, 80% 45%, 100% 70%, 65% 65%, 55% 95%, 40% 70%, 5% 90%, 20% 50%, 0% 25%, 35% 35%);"></div>
+        <div id="star-layer-3" class="absolute w-[300vw] h-[300vw] bg-black transition-transform duration-[600ms] ease-in-out pointer-events-auto" style="clip-path: polygon(45% 0%, 60% 35%, 90% 15%, 75% 55%, 100% 90%, 55% 75%, 40% 100%, 30% 65%, 0% 85%, 25% 40%, 10% 5%, 40% 25%);"></div>
         
         <div id="loader-text-wrapper" class="absolute z-[10000] text-center transition-all duration-700 ease-out flex flex-col items-center">
             <span id="loader-subtitle" class="text-lg md:text-xl uppercase tracking-[0.6em] text-white mb-4 opacity-0 translate-y-6 transition-all duration-1000 ease-out drop-shadow-[2px_2px_0_rgba(230,0,18,1)]">
@@ -634,8 +633,14 @@
                 textWrapper.style.opacity = "0";
                 textWrapper.style.transform = "scale(1.05)";
                 
-                document.getElementById("shutter-top").classList.add("shutter-open-top");
-                document.getElementById("shutter-bottom").classList.add("shutter-open-bottom");
+                document.getElementById("star-layer-3").style.transform = "scale(0) rotate(90deg)";
+                setTimeout(() => {
+                    document.getElementById("star-layer-2").style.transform = "scale(0) rotate(-90deg)";
+                }, 150);
+                setTimeout(() => {
+                    document.getElementById("star-layer-1").style.transform = "scale(0) rotate(45deg)";
+                }, 300);
+
                 playTone(330, 'triangle', 0.8);
                 
                 document.body.classList.remove("overflow-y-hidden");
