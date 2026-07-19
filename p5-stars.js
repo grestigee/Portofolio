@@ -166,6 +166,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Canvas 1: Main Background (Red & Black)
     createStarApp("pixi-canvas", "red-black");
     
-    // Canvas 2: Font Background (Red & White)
+    // Canvas 2: Hero Marquee Background (Red & White)
     createStarApp("pixi-text-canvas", "red-white");
+
+    // Canvas 3: Middle Marquee Background (Red & White)
+    createStarApp("pixi-text-canvas-2", "red-white");
 });

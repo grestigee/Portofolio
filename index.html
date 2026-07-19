@@ -83,22 +83,28 @@
          * MARQUEE 2: Right to Left (Middle Divider Band)
          */
         .marquee-container-rtl {
+            position: relative;
             width: 100%;
             overflow: hidden;
             white-space: nowrap;
-            background-color: #0c0d0e;
-            color: white;
-            padding: 1.5rem 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
+            mix-blend-mode: screen;
+            z-index: 0;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
         }
 
         .marquee-content-rtl {
             display: flex;
             width: max-content;
             animation: marquee-rtl 25s linear infinite;
+            background: black; 
+            color: white; 
+            mix-blend-mode: multiply; 
+            position: relative;
+            z-index: 2;
+            padding: 1.5rem 0;
         }
 
         .marquee-text-rtl {
@@ -353,33 +359,34 @@
 
         <!-- MIDDLE MARQUEE BAND (Right to Left) -->
         <div class="marquee-container-rtl">
+            <canvas id="pixi-text-canvas-2" class="absolute inset-0 w-full h-full z-[1]"></canvas>
             <div class="marquee-content-rtl">
                 <!-- Text grouping 1 -->
                 <div class="marquee-text-rtl">
-                    <span>DESIGN BY DHAIFULLOH RAIHAN ZAYYAN</span>
+                    <span>CALLING ALL PHANTOM THIEVES</span>
                     <span class="star-icon">✸</span>
-                    <span>DIGITAL PRODUCT AND BRAND</span>
+                    <span>READY TO STEAL YOUR HEART</span>
                     <span class="star-icon">✸</span>
                 </div>
                 <!-- Text grouping 2 (Duplicate for seamless loop) -->
                 <div class="marquee-text-rtl">
-                    <span>DESIGN BY DHAIFULLOH RAIHAN ZAYYAN</span>
+                    <span>CALLING ALL PHANTOM THIEVES</span>
                     <span class="star-icon">✸</span>
-                    <span>DIGITAL PRODUCT AND BRAND</span>
+                    <span>READY TO STEAL YOUR HEART</span>
                     <span class="star-icon">✸</span>
                 </div>
                 <!-- Text grouping 3 (Duplicate for seamless loop) -->
                 <div class="marquee-text-rtl">
-                    <span>DESIGN BY DHAIFULLOH RAIHAN ZAYYAN</span>
+                    <span>CALLING ALL PHANTOM THIEVES</span>
                     <span class="star-icon">✸</span>
-                    <span>DIGITAL PRODUCT AND BRAND</span>
+                    <span>READY TO STEAL YOUR HEART</span>
                     <span class="star-icon">✸</span>
                 </div>
                 <!-- Text grouping 4 (Duplicate for seamless loop) -->
                 <div class="marquee-text-rtl">
-                    <span>DESIGN BY DHAIFULLOH RAIHAN ZAYYAN</span>
+                    <span>CALLING ALL PHANTOM THIEVES</span>
                     <span class="star-icon">✸</span>
-                    <span>DIGITAL PRODUCT AND BRAND</span>
+                    <span>READY TO STEAL YOUR HEART</span>
                     <span class="star-icon">✸</span>
                 </div>
             </div>
