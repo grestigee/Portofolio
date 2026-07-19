@@ -70,7 +70,8 @@ void main() {
 	float alphaCutout = star(uv, 1., .6);
 	vec3 outputCol = mix(col1, col2, starCol);
     float alpha = 1. - smoothstep(-.008, -.001, alphaCutout);
-	gl_FragColor = vec4(outputCol , alpha);
+    // PREMULTIPLY ALPHA TO FIX RED BOX GLITCH IN PIXIJS
+	gl_FragColor = vec4(outputCol * alpha, alpha);
 }
 `;
 
@@ -83,20 +84,21 @@ function hexToRgb(hex) {
     ];
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const canvas = document.getElementById("pixi-canvas");
+function createStarApp(canvasId, mode) {
+    const canvas = document.getElementById(canvasId);
     if (!canvas) return;
 
-    // Initialize Pixi Application
+    const isTextCanvas = mode === 'red-white';
+    
     const app = new PIXI.Application({
         view: canvas,
-        resizeTo: window,
+        resizeTo: isTextCanvas ? canvas.parentElement : window,
         autoDensity: true,
         resolution: window.devicePixelRatio || 1,
-        backgroundAlpha: 0, // Transparent so background color shows through
+        backgroundAlpha: isTextCanvas ? 1 : 0, 
+        backgroundColor: isTextCanvas ? 0x000000 : 0x000000, 
     });
 
-    // Create a simple Quad Geometry for the shader to run on
     const geometry = new PIXI.Geometry()
         .addAttribute('aVertexPosition', [-1, -1, 1, -1, 1, 1, -1, 1], 2)
         .addAttribute('aUvs', [0, 0, 1, 0, 1, 1, 0, 1], 2)
@@ -105,12 +107,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const materials = [];
     const materialVariantCount = 8;
     
-    // Create multiple materials with different speeds/colors
     for (let i = 0; i < materialVariantCount; i++) {
-        // Red and Black stars only
         const isRed = i % 2 === 0;
-        const color1 = isRed ? hexToRgb('#e60012') : hexToRgb('#000000');
-        const color2 = isRed ? hexToRgb('#7a0009') : hexToRgb('#1a1a1a'); // darker red or dark grey for the core
+        let color1, color2;
+        
+        if (mode === 'red-black') {
+            color1 = hexToRgb('#e60012');
+            color2 = hexToRgb('#000000');
+        } else {
+            // mode === 'red-white'
+            color1 = isRed ? hexToRgb('#e60012') : hexToRgb('#ffffff');
+            color2 = isRed ? hexToRgb('#ffffff') : hexToRgb('#e60012');
+        }
+
         const speed = i < materialVariantCount / 2 ? 0.25 : -0.25;
         const offset = Math.random() * 100;
 
@@ -129,20 +138,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Determine how many stars based on screen size
     const minScale = 150;
     const maxScale = 250;
     const count = window.innerWidth < 768 ? 30 : 60;
 
-    // Spawn stars
     for (let i = 0; i < count; i++) {
-        const x = Math.random() * window.innerWidth;
-        const y = Math.random() * window.innerHeight;
+        const x = Math.random() * (isTextCanvas ? 3000 : window.innerWidth);
+        const y = Math.random() * (isTextCanvas ? 500 : window.innerHeight);
         const rotation = Math.random() * Math.PI * 2;
         const scale = (Math.random() * (maxScale - minScale) + minScale);
 
         const material = materials[Math.floor(Math.random() * materials.length)];
         const starMesh = new PIXI.Mesh(geometry, material);
+        
+        // Fix for WebGL blending
+        starMesh.blendMode = PIXI.BLEND_MODES.NORMAL;
         
         starMesh.position.set(x, y);
         starMesh.rotation = rotation;
@@ -150,4 +160,12 @@ document.addEventListener("DOMContentLoaded", () => {
         
         app.stage.addChild(starMesh);
     }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Canvas 1: Main Background (Red & Black)
+    createStarApp("pixi-canvas", "red-black");
+    
+    // Canvas 2: Font Background (Red & White)
+    createStarApp("pixi-text-canvas", "red-white");
 });

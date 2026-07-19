@@ -13,15 +13,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap');
         
-        .p5-star-text {
-            background-color: #e60012;
-            background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 15 L32 28 L45 30 L32 32 L30 45 L28 32 L15 30 L28 28 Z' fill='rgba(255,255,255,1)'/%3E%3Cpath d='M90 75 L93 83 L101 85 L93 87 L90 95 L87 87 L79 85 L87 83 Z' fill='rgba(255,255,255,0.8)'/%3E%3Cpath d='M10 80 L12 85 L17 87 L12 89 L10 94 L8 89 L3 87 L8 85 Z' fill='rgba(255,255,255,0.4)'/%3E%3Ccircle cx='60' cy='100' r='3' fill='rgba(255,255,255,0.8)'/%3E%3Ccircle cx='100' cy='30' r='2' fill='rgba(255,255,255,0.5)'/%3E%3Ccircle cx='40' cy='40' r='4' fill='rgba(255,255,255,0.3)'/%3E%3C/svg%3E");
-            background-size: 150px 150px;
-            animation: p5-bg-scroll 8s linear infinite;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            color: transparent;
-        }
+
 
         @keyframes p5-bg-scroll {
             from { background-position: 0 0; }
@@ -46,27 +38,35 @@
         .marquee-container-ltr {
             position: absolute;
             top: 52%;
-            left: 0;
-            width: 100vw;
-            transform: translateY(-50%);
+            left: -10vw;
+            width: 120vw;
+            height: 35vh; 
+            transform: translateY(-50%) rotate(-10deg);
             overflow: hidden;
             z-index: 0; 
             white-space: nowrap;
+            mix-blend-mode: screen; /* Allows canvas to show over background */
         }
 
         .marquee-content-ltr {
             display: inline-block;
             animation: marquee-ltr 22s linear infinite;
+            background: black; /* Mask background */
+            color: white; /* Mask text */
+            mix-blend-mode: multiply; /* Cuts out text to show canvas below */
+            position: relative;
+            z-index: 2;
+            height: 100%;
         }
 
         .marquee-text-ltr {
             font-size: 24vw; 
             font-weight: 900;
-            line-height: 0.8;
+            line-height: 35vh; /* Match container height */
             letter-spacing: -0.04em;
             text-transform: uppercase;
             padding-right: 10vw;
-            opacity: 0.5; /* Reduced opacity so it's subtle in the background */
+            vertical-align: middle;
         }
 
         @keyframes marquee-ltr {
@@ -254,10 +254,11 @@
 
         <!-- Background Marquee (Left to Right) -->
         <div class="marquee-container-ltr pointer-events-none">
+            <canvas id="pixi-text-canvas" class="absolute inset-0 w-full h-full z-[1]"></canvas>
             <div class="marquee-content-ltr">
-                <span class="marquee-text-ltr p5-star-text">DHAIFULLOH RAIHAN ZAYYAN</span>
-                <span class="marquee-text-ltr p5-star-text">DHAIFULLOH RAIHAN ZAYYAN</span>
-                <span class="marquee-text-ltr p5-star-text">DHAIFULLOH RAIHAN ZAYYAN</span>
+                <span class="marquee-text-ltr">DHAIFULLOH RAIHAN ZAYYAN</span>
+                <span class="marquee-text-ltr">DHAIFULLOH RAIHAN ZAYYAN</span>
+                <span class="marquee-text-ltr">DHAIFULLOH RAIHAN ZAYYAN</span>
             </div>
         </div>
 
@@ -326,21 +327,21 @@
         <div class="marquee-container-rtl">
             <div class="marquee-content-rtl">
                 <!-- Text grouping 1 -->
-                <div class="marquee-text-rtl p5-star-text">
+                <div class="marquee-text-rtl">
                     <span>DESIGN BY DHAIFULLOH RAIHAN ZAYYAN</span>
-                    <span class="star-icon text-black">✸</span>
+                    <span class="star-icon">✸</span>
                     <span>DIGITAL PRODUCT AND BRAND</span>
-                    <span class="star-icon text-black">✸</span>
+                    <span class="star-icon">✸</span>
                 </div>
                 <!-- Text grouping 2 (Duplicate for seamless loop) -->
-                <div class="marquee-text-rtl p5-star-text">
+                <div class="marquee-text-rtl">
                     <span>DESIGN BY DHAIFULLOH RAIHAN ZAYYAN</span>
                     <span class="star-icon">✸</span>
                     <span>DIGITAL PRODUCT AND BRAND</span>
                     <span class="star-icon">✸</span>
                 </div>
                 <!-- Text grouping 3 (Duplicate for seamless loop) -->
-                <div class="marquee-text-rtl p5-star-text">
+                <div class="marquee-text-rtl">
                     <span>DESIGN BY DHAIFULLOH RAIHAN ZAYYAN</span>
                     <span class="star-icon">✸</span>
                     <span>DIGITAL PRODUCT AND BRAND</span>
