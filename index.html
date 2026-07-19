@@ -388,6 +388,9 @@
             <p class="text-neutral-500 text-xs mb-6">Let's create exceptional digital experiences together.</p>
             
             <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <input type="hidden" name="access_key" value="851e9cb9-8f25-4a8a-9db0-e0bc243ec068">
+                <input type="hidden" name="subject" value="New Project Inquiry from Portfolio">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                 <div>
                     <label class="block text-xs font-bold tracking-wider text-neutral-700 uppercase mb-1">Your Name</label>
                     <input type="text" name="name" required class="w-full border border-neutral-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-black transition-colors" placeholder="Dhaifulloh Raihan Zayyan">
@@ -534,23 +537,45 @@
             e.preventDefault();
             
             const form = e.target;
+            const submitBtn = document.getElementById('submit-btn');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING...';
+            submitBtn.disabled = true;
+            
             const formData = new FormData(form);
-            
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-            
-            const subject = encodeURIComponent("Portfolio Inquiry from " + name);
-            const body = encodeURIComponent("Hi Dhaifulloh,\n\n" + message + "\n\nBest regards,\n" + name + "\nEmail: " + email);
-            
-            // Open the user's default email client
-            window.location.href = `mailto:zayyan12a@gmail.com?subject=${subject}&body=${body}`;
-            
-            // Show success animation
-            playTone(800, 'sine', 0.3);
-            form.classList.add("hidden");
-            document.getElementById("modal-success").classList.remove("hidden");
-            form.reset();
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let jsonResponse = await response.json();
+                if (response.status == 200) {
+                    playTone(800, 'sine', 0.3);
+                    form.classList.add("hidden");
+                    document.getElementById("modal-success").classList.remove("hidden");
+                    form.reset();
+                } else {
+                    console.log(response);
+                    alert("Sorry, there was an error sending your message. Please try again.");
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                alert("Sorry, there was an error sending your message. Please try again.");
+            })
+            .finally(() => {
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
         }
 
         function scrollToAbout() {
